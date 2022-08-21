@@ -1,3 +1,4 @@
+<!--Poner boton para modo oscuro-->
 <!DOCTYPE html>
 <html>
 
@@ -12,19 +13,29 @@
                 var min = d.getMinutes();
                 var hora = d.getHours();
 
-
-                a = document.getElementById("segundos").innerHTML = ":  " + sec;
-                document.getElementById("minutos").innerHTML = "" + min;
-                document.getElementById("hora").innerHTML = hora + "   :";
-
-                //quando los digitos sean 0,1,2... poner un 0 delante para que no se vea feo
+                //horas
+                if(hora == "0" || hora == "1" || hora == "2" || hora == "3" || hora == "4" || hora == "5" || hora == "6" || hora == "7" || hora == "8" || hora == "9")
+                    document.getElementById("hora").innerHTML = "0" + hora + "   :";
+                else
+                    document.getElementById("hora").innerHTML = hora + "   :";
                 
+                //minutos
+                if(min == "0" || min == "1" || min == "2" || min == "3" || min == "4" || min == "5" ||min == "6" || min=="7" || min == "8" || min== "9")
+                    document.getElementById("minutos").innerHTML = "0" + min;
+                else
+                    document.getElementById("minutos").innerHTML = "" + min;
+                
+                //segundos
+                if(sec == "0" || sec == "1" || sec == "2" || sec == "3" || sec == "4" || sec == "5" ||sec == "6" || sec == "7" || sec == "8" || sec == "9")
+                    document.getElementById("segundos").innerHTML = ": 0" + sec;
+                else
+                    document.getElementById("segundos").innerHTML = ":  " + sec;
+                               
           
         }
     </script>
 
     <style>
-
         @font-face {
             font-family: DS-DIGIB;
             src: url("DS-DIGIB.TTF");
@@ -33,7 +44,6 @@
             position: absolute;
             width: 76px;
             height: 19px;
-
             font-family: 'DS-DIGIB';
             font-style: normal;
             font-weight: 400;
@@ -51,6 +61,7 @@
             font-size: 60px;
             line-height: 15px;
             left: 100px;
+            /*color: aliceblue;*/
         }
         #segundos{
             position: absolute;
@@ -67,19 +78,32 @@
 
         body{
             display: flex;
-            justify-content: center;
+            /*justify-content: center;*/
         }
 
         #reloj{
             position: relative;
             background-color: black;
-            margin-left: -300px;
+            margin-left: 42%;
+            margin-top: 20%;
             
+        }
+
+        #modoNoche{
+            position: absolute;
+            display: flex;
+            left:0px; /*A la derecha deje un espacio de 0px*/
+            right:0px; /*A la izquierda deje un espacio de 0px*/
+            bottom:0px; /*Abajo deje un espacio de 0px*/
+            height:50px; /*alto del div*/
+            /*z-index:0;*/
         }
 
     </style>
 </head>
 <body>
+
+    <button id="modoNoche">Hola</button>
 
     <div id="reloj">
         <p id="hora"></p>
