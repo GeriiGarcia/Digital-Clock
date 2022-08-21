@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <script>
+        setInterval(displayHello, 1000);
+        
+        function displayHello() {
+                var d = new Date();
+                var sec = d.getSeconds();
+                var min = d.getMinutes();
+                var hora = d.getHours();
+
+
+                a = document.getElementById("segundos").innerHTML = ":  " + sec;
+                document.getElementById("minutos").innerHTML = "" + min;
+                document.getElementById("hora").innerHTML = hora + "   :";
+
+                //quando los digitos sean 0,1,2... poner un 0 delante para que no se vea feo
+                
+          
+        }
+    </script>
+
+    <style>
+
+        @font-face {
+            font-family: DS-DIGIB;
+            src: url("DS-DIGIB.TTF");
+        }
+        #hora{
+            position: absolute;
+            width: 76px;
+            height: 19px;
+
+            font-family: 'DS-DIGIB';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 60px;
+            line-height: 15px;
+        }
+        #minutos{
+            position: absolute;
+            width: 76px;
+            height: 19px;
+
+            font-family: 'DS-DIGIB';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 60px;
+            line-height: 15px;
+            left: 100px;
+        }
+        #segundos{
+            position: absolute;
+            width: 112px;
+            height: 19px;
+
+            font-family: 'DS-DIGIB';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 60px;
+            line-height: 15px;
+            left: 180px;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+        }
+
+        #reloj{
+            position: relative;
+            background-color: black;
+            margin-left: -300px;
+            
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="reloj">
+        <p id="hora"></p>
+        <p id="minutos"></p>
+        <p id="segundos"></p>
+
+    </div>
+
+
+
+
+
+</body>
+</html>
