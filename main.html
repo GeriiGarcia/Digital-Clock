@@ -1,10 +1,45 @@
-<!--Poner boton para modo oscuro-->
+<!--Poner los numeros mas grandes-->
 <!DOCTYPE html>
 <html>
 
 <head>
 
-    <script>
+    <script>      
+        var estado = false;
+
+        function noche(){
+            if(estado == false)
+                estado = true;
+            else   
+                estado = false;
+
+            if(estado == true)
+            {
+                document.body.style.backgroundColor = '#202020';
+                document.getElementById("hora").style.color = '#D5D5D5'
+                document.getElementById("minutos").style.color = '#D5D5D5'
+                document.getElementById("segundos").style.color = '#D5D5D5'
+                document.getElementById("punto1").style.color = '#D5D5D5'
+                document.getElementById("punto2").style.color = '#D5D5D5'
+
+                document.getElementById("modoNoche").innerHTML = "Light Mode";
+                document.getElementById("modoNoche").style.cssText.color = "#000000;"
+            }
+            else
+            {
+                document.body.style.backgroundColor = '#FFFFFF';
+                document.getElementById("hora").style.color = '#000000'
+                document.getElementById("minutos").style.color = '#000000'
+                document.getElementById("segundos").style.color = '#000000'
+                document.getElementById("punto1").style.color = '#000000'
+                document.getElementById("punto2").style.color = '#000000'
+
+                document.getElementById("modoNoche").innerHTML = "Dark Mode";
+                document.getElementById("modoNoche").style.color = "#ffffff"
+            }
+        }
+
+
         setInterval(displayHello, 1000);
         
         function displayHello() {
@@ -15,9 +50,9 @@
 
                 //horas
                 if(hora == "0" || hora == "1" || hora == "2" || hora == "3" || hora == "4" || hora == "5" || hora == "6" || hora == "7" || hora == "8" || hora == "9")
-                    document.getElementById("hora").innerHTML = "0" + hora + "   :";
+                    document.getElementById("hora").innerHTML = "0" + hora + "";
                 else
-                    document.getElementById("hora").innerHTML = hora + "   :";
+                    document.getElementById("hora").innerHTML = hora + "";
                 
                 //minutos
                 if(min == "0" || min == "1" || min == "2" || min == "3" || min == "4" || min == "5" ||min == "6" || min=="7" || min == "8" || min== "9")
@@ -27,9 +62,9 @@
                 
                 //segundos
                 if(sec == "0" || sec == "1" || sec == "2" || sec == "3" || sec == "4" || sec == "5" ||sec == "6" || sec == "7" || sec == "8" || sec == "9")
-                    document.getElementById("segundos").innerHTML = ": 0" + sec;
+                    document.getElementById("segundos").innerHTML = "0" + sec;
                 else
-                    document.getElementById("segundos").innerHTML = ":  " + sec;
+                    document.getElementById("segundos").innerHTML = "" + sec;
                                
           
         }
@@ -73,7 +108,7 @@
             font-weight: 400;
             font-size: 60px;
             line-height: 15px;
-            left: 180px;
+            left: 200px;
         }
 
         body{
@@ -89,28 +124,77 @@
             
         }
 
-        #modoNoche{
+        #punto1{
             position: absolute;
-            display: flex;
-            left:0px; /*A la derecha deje un espacio de 0px*/
-            right:0px; /*A la izquierda deje un espacio de 0px*/
-            bottom:0px; /*Abajo deje un espacio de 0px*/
-            height:50px; /*alto del div*/
-            /*z-index:0;*/
+            margin-left: 75px;
+            margin-top: 55px;
+
+            font-family: 'DS-DIGIB';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 60px;
+            line-height: 15px;
         }
+        #punto2{
+            position: absolute;
+            margin-left: 180px;
+            margin-top: 55px;
+
+            font-family: 'DS-DIGIB';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 60px;
+            line-height: 15px;
+        }
+
+:root {
+  --light: #d8dbe0;
+  --dark: #28292c;
+  --link: rgb(27, 129, 112);
+  --link-hover: rgb(24, 94, 82);
+}
+
+button {
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  background-color: var(--dark);
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 45%;
+  color: #FFFFFF;
+  text-align: left;
+}
+
+input {
+  position: absolute;
+  display: none;
+}
+
+#modoNoche{
+    text-decoration-color: #ffffff;
+    border: none;
+}
+
 
     </style>
 </head>
 <body>
 
-    <button id="modoNoche">Hola</button>
+    <button onclick="noche()" id="modoNoche">
+        <input type = 'checkbox'>
+        <span class = 'slider'></span>
+        Dark Mode
+    </button>
 
     <div id="reloj">
         <p id="hora"></p>
+        <p id="punto1">:</p>
         <p id="minutos"></p>
+        <p id="punto2">:</p>
         <p id="segundos"></p>
-
     </div>
+
 
 
 
