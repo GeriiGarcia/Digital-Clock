@@ -1,4 +1,7 @@
-<!--Arreglar lo de que cambie de color el boton y ponerlo ya en la pagina de github-->
+<!--Hacer un boton para amliar y disminuir el tammaño del reloj en otra rama-->
+<!--Adaptarlo para moviles-->
+<!--Ponerlo ya en la pagina de github-->
+
 <!DOCTYPE html>
 <html>
 
@@ -23,7 +26,9 @@
                 document.getElementById("punto2").style.color = '#D5D5D5'
 
                 document.getElementById("modoNoche").innerHTML = "Light Mode";
-                document.getElementById("modoNoche").style.cssText.color = "#000000;"
+                document.getElementById("modoNoche").style.color = '#FFFFFF';
+                document.getElementById("modoNoche").style.backgroundColor = '#202020'; 
+                
             }
             else
             {
@@ -35,7 +40,8 @@
                 document.getElementById("punto2").style.color = '#000000'
 
                 document.getElementById("modoNoche").innerHTML = "Dark Mode";
-                document.getElementById("modoNoche").style.color = "#ffffff"
+                document.getElementById("modoNoche").style.color = '#000000';
+                document.getElementById("modoNoche").style.backgroundColor = '#d8dbe0';
             }
         }
 
@@ -154,16 +160,17 @@
   --link-hover: rgb(24, 94, 82);
 }
 
-button {
+#modoNoche {
   position: absolute;
   width: 100px;
   height: 50px;
-  background-color: var(--dark);
+  background-color: #d8dbe0;
   border-radius: 50px;
   cursor: pointer;
   margin-top: 45%;
-  color: #FFFFFF;
-  text-align: left;
+  color: #000000;
+  text-align: center;
+  border: none;
 }
 
 input {
@@ -171,10 +178,7 @@ input {
   display: none;
 }
 
-#modoNoche{
-    text-decoration-color: #ffffff;
-    border: none;
-}
+
 
 
     </style>
