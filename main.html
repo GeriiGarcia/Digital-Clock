@@ -1,4 +1,5 @@
 <!--Hacer un boton para amliar y disminuir el tammaño del reloj en otra rama-->
+<!--Añadir temporizador y cronometro-->
 <!--Adaptarlo para moviles-->
 <!--Ponerlo ya en la pagina de github-->
 
@@ -125,7 +126,7 @@
         #reloj{
             position: relative;
             background-color: black;
-            margin-left: 39%;
+            margin-left: 30%;
             margin-top: 20%;
             
         }
@@ -160,18 +161,22 @@
   --link-hover: rgb(24, 94, 82);
 }
 
-#modoNoche {
-  position: absolute;
+#botonera{
+    margin-top: 45%;
+    display: inline-block;
+}
+
+.modoNoche {
   width: 100px;
   height: 50px;
   background-color: #d8dbe0;
   border-radius: 50px;
   cursor: pointer;
-  margin-top: 45%;
   color: #000000;
   text-align: center;
   border: none;
 }
+
 
 input {
   position: absolute;
@@ -185,11 +190,22 @@ input {
 </head>
 <body>
 
-    <button onclick="noche()" id="modoNoche">
+    <div id="botonera">
+
+    <button onclick="noche()" class="modoNoche">
         <input type = 'checkbox'>
         <span class = 'slider'></span>
         Dark Mode
     </button>
+
+    <button class="modoNoche">
+        <input type = 'checkbox'>
+        <span class = 'slider'></span>
+        Temporizador
+    </button>
+
+    </div>
+
 
     <div id="reloj">
         <p id="hora"></p>
