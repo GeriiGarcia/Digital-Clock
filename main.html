@@ -200,6 +200,7 @@
             font-size: 100px;
             line-height: 15px;
             left: 280px;
+            
         }
 
         body{
@@ -209,8 +210,9 @@
 
         #reloj{
             position: relative;
-            display: flex;
+            display: inline-block;
             
+
             background-color: aqua;
             height: 140px;
             width: 50%;
@@ -267,6 +269,18 @@
   border: none;
 }
 
+#temporizador
+{
+    width: 100px;
+  height: 50px;
+  background-color: #d8dbe0;
+  border-radius: 50px;
+  cursor: pointer;
+  color: #000000;
+  text-align: center;
+  border: none;
+}
+
 
 input {
   position: absolute;
@@ -288,7 +302,7 @@ input {
         Dark Mode
     </button>
 
-    <button class="modoNoche">
+    <button id="temporizador">
         <input type = 'checkbox'>
         <span class = 'slider'></span>
         Temporizador
