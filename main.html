@@ -1,7 +1,8 @@
 <!--Hacer un boton para amliar y disminuir el tammaño del reloj en otra rama-->
 <!--Añadir temporizador y cronometro-->
 <!--Adaptarlo para moviles-->
-<!--Ponerlo ya en la pagina de github-->
+<!--Poner boton de play bonito-->
+<!--Hacer que no aparezca el boton de play al iniciar la pagina-->
 
 <!DOCTYPE html>
 <html>
@@ -33,6 +34,9 @@
                 document.getElementById("modoNoche").style.backgroundColor = '#202020'; 
                 document.getElementById("temporizador").style.backgroundColor = '#202020';
                 document.getElementById("temporizador").style.color = '#FFFFFF'
+
+                document.getElementById("Parar").style.backgroundColor = '#202020';
+                document.getElementById("Parar").style.color = '#FFFFFF'
                 
                 
             }
@@ -50,6 +54,9 @@
                 document.getElementById("modoNoche").style.backgroundColor = '#d8dbe0';
                 document.getElementById("temporizador").style.backgroundColor = '#d8dbe0';
                 document.getElementById("temporizador").style.color = '#000000'
+
+                document.getElementById("Parar").style.color = '#000000'
+                document.getElementById("Parar").style.backgroundColor = '#d8dbe0';
             }
         }
 
@@ -65,6 +72,7 @@
 
                 if(mode == "Reloj")
                 {
+                    document.getElementById("Parar").style.display = "none";
                     //horas
                     if(hora == "0" || hora == "1" || hora == "2" || hora == "3" || hora == "4" || hora == "5" || hora == "6" || hora == "7" || hora == "8" || hora == "9")
                         document.getElementById("hora").innerHTML = "0" + hora + "";
@@ -86,6 +94,7 @@
                 else
                 {
                     temporizador();
+                    document.getElementById("Parar").style.display = "initial";
                 }
                                
           
@@ -103,6 +112,11 @@
                 paradoC = false;
             else
                 paradoC = true;
+
+            if(paradoC == true)
+                document.getElementById("Parar").innerHTML = "Play";
+            else
+                document.getElementById("Parar").innerHTML = "Pause";
         }
 
         var secC = 0;
@@ -197,6 +211,7 @@
         font-size: 100px;
         line-height: 15px;
         left: 140px;
+
         
     }
     #segundos{
@@ -402,10 +417,23 @@ display: none;
             line-height: 15px;
         }
 
+        #Parar{
+            width: 100%;
+            height: 20%;
+            background-color: #d8dbe0;
+            border-radius: 50px;
+            cursor: pointer;
+            color: #000000;
+            text-align: center;
+            border: none;
+            font-size: 30px;
+        }
+
         #cajonPlay{
             position: absolute;
-            top: 45%;
-        }
+            top: 55%;
+            width: 200px;
+    }
 
 :root {
   --light: #d8dbe0;
@@ -481,7 +509,7 @@ input {
         <button onclick="changeParado()" id="Parar">
             <input type = 'checkbox'>
             <span class = 'slider'></span>
-            1
+            Play
         </button>
 
     </div>
