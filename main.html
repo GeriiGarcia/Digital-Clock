@@ -96,23 +96,32 @@
                     else
                         document.getElementById("segundos").innerHTML = "" + sec;
                 }
-                else
+                else if(mode == "cronometro")
                 {
                     cronometro();
+                    
                     document.getElementById("cronometro").innerHTML = "Reloj";
                     document.getElementById("Parar").style.display = "initial";
                     document.getElementById("Reset").style.display = "initial";
                 }
+                else if(mode == 'temporizador')
+                {
+                    temporizador();
+                }
                                
-          
         }
 
-        function changeMode(){
-            if(mode == modos[0])
+        function changeMode(num){
+            if(num == modos[1] && mode == modos[0])
                 mode = modos[1];
-            else
+            else if (num = modos[1] && mode == modos[1])
                 mode = modos[0];
+            else 
+                mode = modos[2];
+
+            
         }
+
         function changeParado()
         {
             if(paradoC == true)
@@ -188,6 +197,26 @@
                     document.getElementById("segundos").innerHTML = "" + secC;
 
         }
+
+        function temporizador()
+        {
+            if(horaC == "0" || horaC == "1" || horaC == "2" || horaC == "3" || horaC == "4" || horaC == "5" || horaC == "6" || horaC == "7" || horaC == "8" || horaC == "9")
+                    document.getElementById("hora").innerHTML = "0" + horaC + "";
+                else
+                    document.getElementById("hora").innerHTML = horaC + "";
+                
+                //minutos
+                if(minC == "0" || minC == "1" || minC == "2" || minC == "3" || minC == "4" || minC == "5" ||minC == "6" || minC == "7" || minC == "8" || minC == "9")
+                    document.getElementById("minutos").innerHTML = "0" + minC;
+                else
+                    document.getElementById("minutos").innerHTML = "" + minC;
+                
+                //segundos
+                if(secC == "0" || secC == "1" || secC == "2" || secC == "3" || secC == "4" || secC == "5" ||secC == "6" || secC == "7" || secC == "8" || secC == "9")
+                    document.getElementById("segundos").innerHTML = "0" + secC;
+                else
+                    document.getElementById("segundos").innerHTML = "" + secC;
+        }
     </script>
 
     <style>
@@ -259,6 +288,16 @@
         text-align: center;
         border: none;
         display: none;
+    }
+    #temporizador{
+        width: 100px;
+        height: 50px;
+        background-color: #d8dbe0;
+        border-radius: 50px;
+        cursor: pointer;
+        color: #000000;
+        text-align: center;
+        border: none;        
     }
     #Reset{
         width: 100px;
@@ -455,7 +494,17 @@ display: none;
             font-size: 30px;
             display: none;
         }
-
+        #temporizador{
+            width: 100%;
+            height: 20%;
+            background-color: #d8dbe0;
+            border-radius: 50px;
+            cursor: pointer;
+            color: #000000;
+            text-align: center;
+            border: none;
+            font-size: 30px;       
+        }
         #Reset{
             width: 100%;
             height: 20%;
@@ -568,11 +617,18 @@ input {
             Dark Mode
         </button>
     
-        <button onclick="changeMode()" id="cronometro">
+        <button onclick="changeMode('cronometro')" id="cronometro">
             <input type = 'checkbox'>
             <span class = 'slider'></span>
             Cronómetro
         </button>
+
+        <button onclick="changeMode('temporizador')"  id="temporizador">
+            <input type = 'checkbox'>
+            <span class = 'slider'></span>
+            Temporizador
+        </button>
+
     
         </div>
     
