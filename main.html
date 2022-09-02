@@ -2,6 +2,7 @@
 <!--Añadir temporizador-->
 <!--Adaptarlo para moviles-->
 <!--Poner boton de play y reset bonito-->
+<!--Para no liarla mucho puedo hacer que el boton de play sea el mismo para los dos modos, pero que haga cosas diferentes segun el modo en el que este-->
 
 <!DOCTYPE html>
 <html>
@@ -107,9 +108,14 @@
                 else if(mode == 'temporizador')
                 {
                     temporizador();
+
                     document.getElementById("cronometro").innerHTML = "Cronómetro";
                     document.getElementById("Parar").style.display = "none";
                     document.getElementById("Reset").style.display = "none";
+
+                    document.getElementById("hora").style.opacity = ".2";
+                    document.getElementById("minutos").style.opacity = ".2";
+                    document.getElementById("segundos").style.opacity = ".2";
                 }
                                
                 
@@ -202,6 +208,7 @@
 
         }
 
+        let paradoT = false;
         function temporizador()
         {
             if(horaC == "0" || horaC == "1" || horaC == "2" || horaC == "3" || horaC == "4" || horaC == "5" || horaC == "6" || horaC == "7" || horaC == "8" || horaC == "9")
