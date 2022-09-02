@@ -107,15 +107,18 @@
                 else if(mode == 'temporizador')
                 {
                     temporizador();
+                    document.getElementById("cronometro").innerHTML = "Cronómetro";
+                    document.getElementById("Parar").style.display = "none";
+                    document.getElementById("Reset").style.display = "none";
                 }
                                
                 
         }
 
         function changeMode(num){
-            if(num == modos[1] && mode == modos[0])
+            if((mode == modos[0] || mode == modos[2]) && num == 'cronometro' )
                 mode = modos[1];
-            else if (num = modos[1] && mode == modos[1])
+            else if (mode == modos[1] && num == modos[1] )
                 mode = modos[0];
             else 
                 mode = modos[2];
