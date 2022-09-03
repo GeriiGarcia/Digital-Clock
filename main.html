@@ -84,6 +84,7 @@
                     document.getElementById("Parar").style.display = "none";
                     document.getElementById("Reset").style.display = "none";
                     document.getElementById("cronometro").innerHTML = "Cronómetro";
+
                     //horas
                     if(hora == "0" || hora == "1" || hora == "2" || hora == "3" || hora == "4" || hora == "5" || hora == "6" || hora == "7" || hora == "8" || hora == "9")
                         document.getElementById("hora").innerHTML = "0" + hora + "";
@@ -113,6 +114,10 @@
                     document.getElementById("hora").style.opacity = "initial";
                     document.getElementById("minutos").style.opacity = "initial";
                     document.getElementById("segundos").style.opacity = "initial";
+
+                    document.getElementById("hT").style.display = "none";
+                    document.getElementById("mT").style.display = "none";
+                    document.getElementById("sT").style.display = "none";
                 }
                 else if(mode == 'temporizador')
                 {
@@ -621,7 +626,7 @@ display: none;
             height: 50px;
             left: 50px;
         }
-        
+
         #sT{
             position: absolute;
             width: 50px;
