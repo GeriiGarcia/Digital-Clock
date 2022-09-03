@@ -35,6 +35,8 @@
                 document.getElementById("modoNoche").style.backgroundColor = '#202020'; 
                 document.getElementById("cronometro").style.backgroundColor = '#202020';
                 document.getElementById("cronometro").style.color = '#FFFFFF'
+                document.getElementById("temporizador").style.backgroundColor = '#202020';
+                document.getElementById("temporizador").style.color = '#FFFFFF'
 
                 document.getElementById("Parar").style.backgroundColor = '#202020';
                 document.getElementById("Parar").style.color = '#FFFFFF'
@@ -57,6 +59,9 @@
                 document.getElementById("modoNoche").style.backgroundColor = '#d8dbe0';
                 document.getElementById("cronometro").style.backgroundColor = '#d8dbe0';
                 document.getElementById("cronometro").style.color = '#000000'
+                document.getElementById("temporizador").style.backgroundColor = '#d8dbe0';
+                document.getElementById("temporizador").style.color = '#000000'
+
 
                 document.getElementById("Parar").style.color = '#000000'
                 document.getElementById("Parar").style.backgroundColor = '#d8dbe0';
@@ -104,14 +109,18 @@
                     document.getElementById("cronometro").innerHTML = "Reloj";
                     document.getElementById("Parar").style.display = "initial";
                     document.getElementById("Reset").style.display = "initial";
+
+                    document.getElementById("hora").style.opacity = "initial";
+                    document.getElementById("minutos").style.opacity = "initial";
+                    document.getElementById("segundos").style.opacity = "initial";
                 }
                 else if(mode == 'temporizador')
                 {
                     temporizador();
 
                     document.getElementById("cronometro").innerHTML = "Cronómetro";
-                    document.getElementById("Parar").style.display = "none";
-                    document.getElementById("Reset").style.display = "none";
+                    document.getElementById("Parar").style.display = "initial";
+                    document.getElementById("Reset").style.display = "initial";
 
                     document.getElementById("hora").style.opacity = ".2";
                     document.getElementById("minutos").style.opacity = ".2";
@@ -129,20 +138,59 @@
             else 
                 mode = modos[2];
 
-            
+            document.getElementById("Parar").innerHTML = "Play";
+            paradoT = true;
+            paradoC = true;
         }
 
         function changeParado()
         {
-            if(paradoC == true)
-                paradoC = false;
-            else
-                paradoC = true;
+            if(mode == modos[1])
+            {
+                if(paradoC == true)
+                    paradoC = false;
+                else
+                    paradoC = true;
 
-            if(paradoC == true)
-                document.getElementById("Parar").innerHTML = "Play";
+                if(paradoC == true)
+                    document.getElementById("Parar").innerHTML = "Play";
+                else
+                    document.getElementById("Parar").innerHTML = "Pause";
+            }
             else
-                document.getElementById("Parar").innerHTML = "Pause";
+            {
+                //get  los numeros del temporizador y asignarlo a las variables
+                if(minT != 0 || secT != 0 || horaT != 0)
+                {
+                    if(paradoT == true)
+                        paradoT = false;
+                    else
+                        paradoT = true;
+
+                    if(paradoT == true)
+                        document.getElementById("Parar").innerHTML = "Play";
+                    else
+                        document.getElementById("Parar").innerHTML = "Pause";
+                }
+            }
+        }
+
+        function Reset(){
+            if(mode == modos[1])
+            {
+                secC = 0;
+                minC = 0;
+                horaC = 0;
+                if(paradoC == false)
+                    changeParado();
+            }
+            else
+            {
+                secT = 0;
+                minT = 0;
+                horaT = 0;
+                paradoT = true;
+            }
         }
 
         var secC = 0;
@@ -177,14 +225,6 @@
             }    
         }
 
-        function Reset(){
-            secC = 0;
-            minC = 0;
-            horaC = 0;
-            if(paradoC == false)
-                changeParado();
-        }
-
         function cronometro() {
            
             enMarcha();
@@ -208,25 +248,66 @@
 
         }
 
+        let horaT = 1;
+        let minT = 1;
+        let secT = 10;
         let paradoT = false;
+
+        function enMarchaT()
+        {
+
+            if(paradoT == false && (minT != 0 || secT != 01 || horaT != 0))
+            {
+                if(secT == 01) 
+                {
+                    secT = 59;
+                    if(minT == 00 && horaT != 00) 
+                    {
+                        minT = 59;
+                        if(horaT != 00)
+                        {
+                            horaT--;
+                        }
+
+                    }
+                    else if(minT!=00)
+                    {
+                        minT--;
+                    }
+                }
+                else
+                    secT--;
+            }
+            else if (paradoT == false)
+            {
+                paradoT = true;
+                document.getElementById("Parar").innerHTML = "Play";
+                horaT = 0;
+                minT = 0;
+                secT = 0;
+                //que aparezcan los inputs
+            }
+        }
+
         function temporizador()
         {
-            if(horaC == "0" || horaC == "1" || horaC == "2" || horaC == "3" || horaC == "4" || horaC == "5" || horaC == "6" || horaC == "7" || horaC == "8" || horaC == "9")
-                    document.getElementById("hora").innerHTML = "0" + horaC + "";
+            enMarchaT();
+            if(horaT == "0" || horaT == "1" || horaT == "2" || horaT == "3" || horaT == "4" || horaT == "5" || horaT == "6" || horaT == "7" || horaT == "8" || horaT == "9")
+                    document.getElementById("hora").innerHTML = "0" + horaT + "";
                 else
-                    document.getElementById("hora").innerHTML = horaC + "";
+                    document.getElementById("hora").innerHTML = horaT + "";
                 
                 //minutos
-                if(minC == "0" || minC == "1" || minC == "2" || minC == "3" || minC == "4" || minC == "5" ||minC == "6" || minC == "7" || minC == "8" || minC == "9")
-                    document.getElementById("minutos").innerHTML = "0" + minC;
+                if(minT == "0" || minT == "1" || minT == "2" || minT == "3" || minT == "4" || minT == "5" || minT == "6" || minT == "7" || minT == "8" || minT == "9")
+                    document.getElementById("minutos").innerHTML = "0" + minT;
                 else
-                    document.getElementById("minutos").innerHTML = "" + minC;
+                    document.getElementById("minutos").innerHTML = "" + minT;
                 
                 //segundos
-                if(secC == "0" || secC == "1" || secC == "2" || secC == "3" || secC == "4" || secC == "5" ||secC == "6" || secC == "7" || secC == "8" || secC == "9")
-                    document.getElementById("segundos").innerHTML = "0" + secC;
+                if(secT == "0" || secT == "1" || secT == "2" || secT == "3" || secT == "4" || secT == "5" || secT == "6" || secT == "7" || secT == "8" || secT == "9")
+                    document.getElementById("segundos").innerHTML = "0" + secT;
                 else
-                    document.getElementById("segundos").innerHTML = "" + secC;
+                    document.getElementById("segundos").innerHTML = "" + secT;
         }
     </script>
 
