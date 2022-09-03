@@ -125,6 +125,10 @@
                     document.getElementById("hora").style.opacity = ".2";
                     document.getElementById("minutos").style.opacity = ".2";
                     document.getElementById("segundos").style.opacity = ".2";
+
+                    document.getElementById("hT").style.display = "initial";
+                    document.getElementById("mT").style.display = "initial";
+                    document.getElementById("sT").style.display = "initial";
                 }
                                
                 
@@ -323,6 +327,17 @@
         font-family: DS-DIGIB;
         src: url("DS-DIGIB.TTF");
     }
+    body{
+        display: flex;
+        justify-content: center;
+    }
+    #reloj{
+        position: absolute;        
+        /*background-color: aqua;*/
+        top: 40%;
+        width: 20%;        
+    }
+
     #hora{
         position: absolute;
         display: flexbox;
@@ -365,50 +380,6 @@
         
     }
 
-    body{
-        display: flex;
-        justify-content: center;
-    }
-
-    #Parar{
-        width: 100px;
-        height: 50px;
-        background-color: #d8dbe0;
-        border-radius: 50px;
-        cursor: pointer;
-        color: #000000;
-        text-align: center;
-        border: none;
-        display: none;
-    }
-    #temporizador{
-        width: 100px;
-        height: 50px;
-        background-color: #d8dbe0;
-        border-radius: 50px;
-        cursor: pointer;
-        color: #000000;
-        text-align: center;
-        border: none;        
-    }
-    #Reset{
-        width: 100px;
-        height: 50px;
-        background-color: #d8dbe0;
-        border-radius: 50px;
-        cursor: pointer;
-        color: #000000;
-        text-align: center;
-        border: none;
-        display: none;
-    }
-    #reloj{
-        position: absolute;        
-        /*background-color: aqua;*/
-        top: 40%;
-        width: 20%;        
-    }
-
     #punto1{
         position: absolute;
         margin-left: 110px;
@@ -434,10 +405,57 @@
         line-height: 15px;
     }
 
+    #cajonInputs{
+        display: inline-block;
+        position: relative;
+    }
+
+    #hT{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+    }
+    #mT{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        left: 50px;
+    }
+    #sT{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        left: 100px;
+    }
+
     #cajonPlay{
             position: absolute;
             top: 60%;
     }
+
+    #Parar{
+        width: 100px;
+        height: 50px;
+        background-color: #d8dbe0;
+        border-radius: 50px;
+        cursor: pointer;
+        color: #000000;
+        text-align: center;
+        border: none;
+        display: none;
+    }
+    #Reset{
+        width: 100px;
+        height: 50px;
+        background-color: #d8dbe0;
+        border-radius: 50px;
+        cursor: pointer;
+        color: #000000;
+        text-align: center;
+        border: none;
+        display: none;
+    }
+
 
 :root {
 --light: #d8dbe0;
@@ -474,6 +492,17 @@ cursor: pointer;
 color: #000000;
 text-align: center;
 border: none;
+}
+
+#temporizador{
+width: 100px;
+height: 50px;
+background-color: #d8dbe0;
+border-radius: 50px;
+cursor: pointer;
+color: #000000;
+text-align: center;
+border: none;        
 }
 
 
@@ -679,7 +708,14 @@ input {
         <p id="minutos"></p>
         <p id="punto2">:</p>
         <p id="segundos"></p>
-        
+
+        <div id="cajonInputs">
+            <input type="number" id="hT" value=""/>
+            <input type="number" id="mT" value=""/>
+            <input type="number" id="sT" value=""/>
+        </div>
+
+ 
 
     </div>
 
