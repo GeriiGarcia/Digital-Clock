@@ -169,6 +169,13 @@
             else
             {
                 //get  los numeros del temporizador y asignarlo a las variables
+                let h = document.getElementById("hT").value;
+                let m = document.getElementById("mT").value;
+                let s = document.getElementById("sT").value;
+
+                horaT = h;
+                minT = m;
+                secT = s;
                 if(minT != 0 || secT != 0 || horaT != 0)
                 {
                     if(paradoT == true)
@@ -294,7 +301,7 @@
                 horaT = 0;
                 minT = 0;
                 secT = 0;
-                //que aparezcan los inputs
+                //que aparezcan los inputs 
             }
         }
 
@@ -333,14 +340,16 @@
         src: url("DS-DIGIB.TTF");
     }
     body{
-        display: flex;
-        justify-content: center;
+        display: grid;
+        place-items: center;
     }
     #reloj{
         position: absolute;        
         /*background-color: aqua;*/
         top: 40%;
-        width: 20%;        
+        width: 380px;
+        height:50px;
+              
     }
 
     #hora{
@@ -538,7 +547,7 @@ display: none;
             position: absolute;
             display: inline-block;
             top: 40%;
-            width: 40%;
+            width: 380px;
             /*height: 200px;*/
             
         }
