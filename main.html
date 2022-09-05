@@ -2,7 +2,6 @@
 <!--Añadir temporizador-->
 <!--Adaptarlo para moviles-->
 <!--Poner boton de play y reset bonito-->
-<!--Para no liarla mucho puedo hacer que el boton de play sea el mismo para los dos modos, pero que haga cosas diferentes segun el modo en el que este-->
 
 <!DOCTYPE html>
 <html>
@@ -169,13 +168,21 @@
             else
             {
                 //get  los numeros del temporizador y asignarlo a las variables
-                let h = document.getElementById("hT").value;
-                let m = document.getElementById("mT").value;
-                let s = document.getElementById("sT").value;
-
-                horaT = h;
-                minT = m;
-                secT = s;
+                let h = document.getElementById("hT");
+                let m = document.getElementById("mT");
+                let s = document.getElementById("sT");
+                if(paradoT == true){
+                    horaT = h.value;
+                    minT = m.value;
+                    secT = s.value;
+                }
+                else
+                {
+                    s.value = secT;
+                    h = horaT;
+                    m = minT;
+                    
+                }
                 if(minT != 0 || secT != 0 || horaT != 0)
                 {
                     if(paradoT == true)
