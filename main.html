@@ -131,10 +131,19 @@
                     document.getElementById("minutos").style.opacity = ".2";
                     document.getElementById("segundos").style.opacity = ".2";
 
-                    document.getElementById("hT").style.display = "initial";
-                    document.getElementById("mT").style.display = "initial";
-                    document.getElementById("sT").style.display = "initial";
+                    if(paradoT == true){
+                        document.getElementById("hT").style.display = "initial";
+                        document.getElementById("mT").style.display = "initial";
+                        document.getElementById("sT").style.display = "initial";
+                    }
+                    else
+                    {
+                        document.getElementById("hT").style.display = "none";
+                        document.getElementById("mT").style.display = "none";
+                        document.getElementById("sT").style.display = "none";
+                    }
                 }
+                        
                                
                 
         }
@@ -175,14 +184,13 @@
                 if(paradoT == true){
                     horaT = h.value;
                     minT = m.value;
-                    secT = s.value;
+                    secT = s.value;                           
                 }
                 else
                 {
                     s.value = secT;
                     h = horaT;
-                    m = minT;
-                    
+                    m = minT;                    
                 }
                 if(minT != 0 || secT != 0 || horaT != 0)
                 {
@@ -275,7 +283,7 @@
         let horaT = 0;
         let minT = 0;
         let secT = 0;
-        let paradoT = false;
+        let paradoT = true;
 
         function enMarchaT()
         {
@@ -434,20 +442,26 @@
 
     #hT{
         position: absolute;
-        width: 50px;
-        height: 50px;
+        width: 112px;
+        height: 100px;
+        font-family: 'DS-DIGIB';
+        font-size: 100px;
     }
     #mT{
         position: absolute;
-        width: 50px;
-        height: 50px;
-        left: 50px;
+        width: 112px;
+        height: 100px;
+        left: 112px;
+        font-family: 'DS-DIGIB';
+        font-size: 100px;
     }
     #sT{
         position: absolute;
-        width: 50px;
-        height: 50px;
-        left: 100px;
+        width: 112px;
+        height: 100px;
+        left: 224px;
+        font-family: 'DS-DIGIB';
+        font-size: 100px;
     }
 
     #cajonPlay{
