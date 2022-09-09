@@ -42,6 +42,13 @@
                 document.getElementById("Parar").style.color = '#FFFFFF'
                 document.getElementById("Reset").style.backgroundColor = '#202020';
                 document.getElementById("Reset").style.color = '#FFFFFF'
+
+                document.getElementById("hT").style.backgroundColor = '#101010';
+                document.getElementById("mT").style.backgroundColor = '#101010';
+                document.getElementById("sT").style.backgroundColor = '#101010';
+                docuemnt.getElementById("hT").style.color = '#FFFFFF';
+                docuemnt.getElementById("mT").style.color = '#FFFFFF';
+                docuemnt.getElementById("sT").style.color = '#FFFFFF';
                 
                 
             }
@@ -62,11 +69,19 @@
                 document.getElementById("temporizador").style.backgroundColor = '#d8dbe0';
                 document.getElementById("temporizador").style.color = '#000000'
 
-
                 document.getElementById("Parar").style.color = '#000000'
                 document.getElementById("Parar").style.backgroundColor = '#d8dbe0';
                 document.getElementById("Reset").style.color = '#000000'
                 document.getElementById("Reset").style.backgroundColor = '#d8dbe0';
+
+                document.getElementById("hT").style.backgroundColor = 'white';
+                document.getElementById("mT").style.backgroundColor = 'white';
+                document.getElementById("sT").style.backgroundColor = 'white';
+                docuemnt.getElementById("hT").style.color = '#000000';
+                docuemnt.getElementById("mT").style.color = '#000000';
+                docuemnt.getElementById("sT").style.color = 'red';
+                
+
             }
         }
         
@@ -111,9 +126,9 @@
                     document.getElementById("Parar").style.display = "initial";
                     document.getElementById("Reset").style.display = "initial";
 
-                    document.getElementById("hora").style.opacity = "initial";
+                    /*document.getElementById("hora").style.opacity = "initial";
                     document.getElementById("minutos").style.opacity = "initial";
-                    document.getElementById("segundos").style.opacity = "initial";
+                    document.getElementById("segundos").style.opacity = "initial";*/
 
                     document.getElementById("hT").style.display = "none";
                     document.getElementById("mT").style.display = "none";
@@ -126,10 +141,6 @@
                     document.getElementById("cronometro").innerHTML = "Cronómetro";
                     document.getElementById("Parar").style.display = "initial";
                     document.getElementById("Reset").style.display = "initial";
-
-                    document.getElementById("hora").style.opacity = ".2";
-                    document.getElementById("minutos").style.opacity = ".2";
-                    document.getElementById("segundos").style.opacity = ".2";
 
                     if(paradoT == true){
                         document.getElementById("hT").style.display = "initial";
@@ -181,6 +192,7 @@
                 let h = document.getElementById("hT");
                 let m = document.getElementById("mT");
                 let s = document.getElementById("sT");
+
                 if(paradoT == true){
                     horaT = h.value;
                     minT = m.value;
@@ -189,21 +201,22 @@
                 else
                 {
                     s.value = secT;
-                    h = horaT;
-                    m = minT;                    
+                    h.value = horaT;
+                    m.value = minT;    
                 }
-                if(minT != 0 || secT != 0 || horaT != 0)
+
+                if((minT != 0 || horaT != 0) && secT != 0)
                 {
                     if(paradoT == true)
                         paradoT = false;
                     else
                         paradoT = true;
-
                     if(paradoT == true)
                         document.getElementById("Parar").innerHTML = "Play";
                     else
                         document.getElementById("Parar").innerHTML = "Pause";
                 }
+            
             }
         }
 
@@ -287,10 +300,10 @@
 
         function enMarchaT()
         {
-
-            if(paradoT == false && (minT >= 0 && secT >= 01 && horaT >= 0))
+            
+            if(paradoT == false && (minT>=0 && minT<=59 && secT>=0 && secT<=59 && horaT >= 0))
             {
-                if(secT == 01) 
+                if(secT == 00) 
                 {
                     secT = 59;
                     if(minT == 00 && horaT != 00) 
@@ -310,14 +323,13 @@
                 else
                     secT--;
             }
-            else if (paradoT == false)
+            else if (paradoT == false && (minT == 0 && secT == 0 && horaT == 0))
             {
                 paradoT = true;
                 document.getElementById("Parar").innerHTML = "Play";
                 horaT = 0;
                 minT = 0;
                 secT = 0;
-                //que aparezcan los inputs 
             }
         }
 
@@ -441,27 +453,67 @@
     }
 
     #hT{
-        position: absolute;
+        /*position: absolute;
         width: 112px;
         height: 100px;
         font-family: 'DS-DIGIB';
+        font-size: 100px;*/
+
+        position: absolute;
+        display: flexbox;
+        width: 112px;
+        height: 80px;
+        font-family: 'DS-DIGIB';
+        font-style: normal;
+        font-weight: 400;
         font-size: 100px;
+        line-height: 15px;
+        border: 0;
+        top: 50px;
+
     }
     #mT{
-        position: absolute;
+        /*position: absolute;
         width: 112px;
         height: 100px;
         left: 112px;
         font-family: 'DS-DIGIB';
+        font-size: 100px;*/
+        position: absolute;
+        display: flexbox;
+        width: 112px;
+        height: 80px;
+
+        font-family: 'DS-DIGIB';
+        font-style: normal;
+        font-weight: 400;
         font-size: 100px;
+        line-height: 15px;
+        left: 140px;
+        border: 0;
+        top: 50px;
     }
     #sT{
-        position: absolute;
+        /*position: absolute;
         width: 112px;
         height: 100px;
         left: 224px;
         font-family: 'DS-DIGIB';
+        font-size: 100px;*/
+
+        position: absolute;
+        display: flexbox;
+        width: 112px;
+        height: 80px;
+
+        font-family: 'DS-DIGIB';
+        font-style: normal;
+        font-weight: 400;
         font-size: 100px;
+        line-height: 15px;
+        left: 280px;
+        border: 0;
+        top: 50px;
     }
 
     #cajonPlay{
@@ -548,9 +600,6 @@ display: none;
 }
 
 }
-
-
-
 
 @media screen and (min-width: 480px) and (max-width:1024px) {
     
@@ -647,22 +696,48 @@ display: none;
 
         #hT{
             position: absolute;
-            width: 50px;
-            height: 50px;
+            display: flexbox;
+            width: 100px;
+            height: 80px;
+            font-family: 'DS-DIGIB';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 100px;
+            line-height: 15px;
+            border: 0;
+            top: 50px;
         }
 
         #mT{
             position: absolute;
-            width: 50px;
-            height: 50px;
-            left: 50px;
+            display: flexbox;
+            width: 100px;
+            height: 80px;
+
+            font-family: 'DS-DIGIB';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 100px;
+            line-height: 15px;
+            left: 140px;
+            border: 0;
+            top: 50px;
         }
 
         #sT{
             position: absolute;
-            width: 50px;
-            height: 50px;
-            left: 100px;
+            display: flexbox;
+            width: 100px;
+            height: 80px;
+
+            font-family: 'DS-DIGIB';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 100px;
+            line-height: 15px;
+            left: 280px;
+            border: 0;
+            top: 50px;
         }
 
         #cajonPlay{
@@ -773,9 +848,9 @@ input {
         <p id="segundos"></p>
 
         <div id="cajonInputs">
-            <input type="number" id="hT" value=""/>
-            <input type="number" id="mT" value=""/>
-            <input type="number" id="sT" value=""/>
+            <input type="number" id="hT" value="" max="99" min="0" placeholder="00"/>
+            <input type="number" id="mT" value="" max="59" min="0" placeholder="00"/>
+            <input type="number" id="sT" value="" max="59" min="0" placeholder="00"/>
         </div>
 
  
