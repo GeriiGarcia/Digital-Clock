@@ -86,7 +86,8 @@
         }
         
         setInterval(displayHello, 1000);
-        function displayHello() {
+        function displayHello() 
+        {
 
 
                 var d = new Date();
@@ -154,7 +155,7 @@
                         document.getElementById("sT").style.display = "none";
                     }
                 }
-
+        }
         function changeMode(num){
             if((mode == modos[0] || mode == modos[2]) && num == 'cronometro' )
                 mode = modos[1];
@@ -216,7 +217,8 @@
             }
         }
 
-        function Reset(){
+        function Reset()
+        {
             if(mode == modos[1])
             {
                 secC = 0;
@@ -266,7 +268,8 @@
             }    
         }
 
-        function cronometro() {
+        function cronometro() 
+        {
            
             enMarcha();
                 //horas
@@ -349,6 +352,7 @@
                 else
                     document.getElementById("segundos").innerHTML = "" + secT;
         }
+    
     </script>
 
     <style>
